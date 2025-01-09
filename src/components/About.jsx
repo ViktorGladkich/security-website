@@ -2,9 +2,9 @@ import React, { useState, useEffect, useRef, forwardRef } from "react";
 import style from "./About.module.scss";
 import { Parallax } from "react-scroll-parallax";
 import { useInView } from "react-intersection-observer";
-import nummer1 from "../images/nummber-WhiteThema/1.png";
-import nummer2 from "../images/nummber-WhiteThema/2.png";
-import nummer3 from "../images/nummber-WhiteThema/3.png";
+const nummer1 = require("../images/nummber-WhiteThema/1.png");
+const nummer2 = require("../images/nummber-WhiteThema/2.png");
+const nummer3 = require("../images/nummber-WhiteThema/3.png");
 
 const About = forwardRef((props, ref) => {
   const [isVisible, setIsVisible] = useState(false);
