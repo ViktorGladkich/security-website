@@ -2,9 +2,9 @@ import React, { useState, useEffect, useRef, forwardRef } from "react";
 import style from "./About.module.scss";
 import { Parallax } from "react-scroll-parallax";
 import { useInView } from "react-intersection-observer";
-const nummer1 = require("../images/nummber-WhiteThema/1.png");
-const nummer2 = require("../images/nummber-WhiteThema/2.png");
-const nummer3 = require("../images/nummber-WhiteThema/3.png");
+const nummer1 = require("/src/images/nummber-WhiteThema/1.png");
+const nummer2 = require("/src/images/nummber-WhiteThema/2.png");
+const nummer3 = require("/src/images/nummber-WhiteThema/3.png");
 
 const About = forwardRef((props, ref) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -66,7 +66,7 @@ const About = forwardRef((props, ref) => {
               historyInView ? style["animate-text-in"] : ""
             }`}
           >
-            <img src={nummer1} alt="nummer-1" loading="lazy"/>
+            <img src={nummer1} alt="nummer-1" loading="lazy" />
             <h3 className={style["about-h3"]}>Unsere Geschichte</h3>
             <p>
               AXMA Security entstand aus der Vision, Sicherheit auf höchstem
@@ -83,7 +83,7 @@ const About = forwardRef((props, ref) => {
               valuesInView ? style["animate-text-in"] : ""
             }`}
           >
-            <img src={nummer2} alt="nummer-2" loading="lazy"/>
+            <img src={nummer2} alt="nummer-2" loading="lazy" />
             <h3 className={style["about-h3"]}>Unsere Werte</h3>
             <p>
               Bei AXMA Security stehen Integrität, Professionalität, und
@@ -100,7 +100,7 @@ const About = forwardRef((props, ref) => {
               missionInView ? style["animate-text-in"] : ""
             }`}
           >
-            <img src={nummer3} alt="nummer-3" loading="lazy"/>
+            <img src={nummer3} alt="nummer-3" loading="lazy" />
             <h3 className={style["about-h3"]}>Unsere Mission</h3>
             <p>
               Unsere Mission ist es, unseren Kunden ein Höchstmaß an Sicherheit
