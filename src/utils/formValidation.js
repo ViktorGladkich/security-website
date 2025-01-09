@@ -1,17 +1,16 @@
-export const validateForm = (name, email, message, setFormErrors) => {
+export const validateForm = (name, email, message) => {
     let errors = {};
-    if (!name.trim()) {
-        errors.name = "Name is required";
-    }
-    if (!email.trim()) {
-        errors.email = "Email is required";
-    } else if (!/\S+@\S+\.\S+/.test(email)) {
-        errors.email = "Email is invalid";
-    }
-    if (!message.trim()) {
-        errors.message = "Message is required";
-    }
 
-    setFormErrors(errors);
-    return Object.keys(errors).length === 0;
+    if (!name || !name.trim()) {
+        errors.name = "Name ist erforderlich";
+    }
+    if (!email || !email.trim()) {
+        errors.email = "E-Mail ist erforderlich";
+    } else if (!/\S+@\S+\.\S+/.test(email)) {
+        errors.email = "E-Mail ist ungültig";
+    }
+    if (!message || !message.trim()) {
+        errors.message = "Nachricht ist erforderlich";
+    }
+    return errors;
 };

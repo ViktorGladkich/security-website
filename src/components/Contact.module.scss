@@ -1,0 +1,118 @@
+.section {
+  margin-bottom: 100px;
+
+  p {
+    max-width: 705px;
+    margin: 0 auto;
+    padding-top: 40px;
+    font-weight: 500;
+    line-height: 25px;
+  }
+}
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  margin: 0 auto;
+  gap: 10px;
+  padding-top: 60px;
+  div {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    label {
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      svg {
+        font-size: 20px;
+      }
+    }
+    input {
+      padding: 0.5rem;
+      max-width: 100%;
+      border: 1px solid black;
+    }
+    textarea {
+      padding: 2.5rem 1rem;
+      border: 1px solid black;
+      border-radius: 5px;
+      max-width: 100%;
+    }
+
+    .error {
+      color: red;
+      font-size: 0.8rem;
+    }
+  }
+  button {
+    padding: 0.7rem 1.5rem;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    align-self: flex-start;
+    transition: background-color 0.3s ease;
+    &:hover {
+      background-color: #333;
+    }
+  }
+}
+
+.animate-fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 540px) {
+  .section {
+    h2 {
+      font-size: 18px;
+    }
+    p {
+      padding-top: 20px;
+    }
+  }
+  .contact-form {
+    div {
+      label {
+        font-size: 14px;
+        svg {
+          font-size: 18px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 430px) {
+  .section {
+    h2 {
+      padding-top: 0px;
+    }
+  }
+  .contact-form {
+    div {
+      input {
+        max-width: 380px;
+      }
+      textarea {
+        max-width: 380px;
+      }
+    }
+  }
+}
+
+@media (max-width: 375px) {
+  .contact-form {
+    input {
+      max-width: 335px;
+    }
+    textarea {
+      max-width: 335px;
+    }
+  }
+}

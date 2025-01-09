@@ -1,0 +1,28 @@
+.container {
+  overflow: hidden;
+  width: 100%;
+  overflow-x: scroll;
+  scrollbar-width: none;
+  max-width: 1000px;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.scroll-container {
+  display: flex;
+  white-space: nowrap;
+  overflow-x: scroll;
+  scroll-behavior: none;
+  padding-left: 10px;
+
+  .image {
+    width: auto;
+    max-height: 100px;
+    margin-right: 20px;
+    object-fit: contain;
+  }
+}
+
+
