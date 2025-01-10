@@ -17,13 +17,18 @@ import Impressum from "./components/rechtliches/Impressum";
 import { handleScroll } from "./utils/handleScroll";
 import Referenzen from "./components/Referenzen";
 import { AiOutlineClose } from "react-icons/ai";
+import CookieBanner from "./components/cookie/CookieBanner";
+import Cookies from "js-cookie";
 
 function App() {
   const [showScrollToTop, setShowScrollToTop] = useState(false);
   const [isButtonAnimated, setIsButtonAnimated] = useState(false);
   const { isModalOpen, openModal, closeModal } = useModal();
   const location = useLocation();
+  const [cookieConsent, setCookieConsent] = useState(false);
+  const [isInitialRender, setIsInitialRender] = useState(true);
 
+  const headerRef = useRef(null);
   const aboutRef = useRef(null);
   const servicesRef = useRef(null);
   const teamRef = useRef(null);
@@ -37,9 +42,6 @@ function App() {
     referenzen: referenzenRef,
     contact: contactRef,
   });
-
-  const [isInitialRender, setIsInitialRender] = useState(true);
-  const headerRef = useRef(null);
 
   useLayoutEffect(() => {
     if (isInitialRender) {
@@ -69,63 +71,73 @@ function App() {
     scrollToTopUtil();
   };
 
+  useEffect(() => {
+    const hasConsent = Cookies.get("cookie_consent");
+    if (hasConsent) {
+      setCookieConsent(true);
+    }
+  }, []);
   return (
-    <ParallaxProvider>
-      <div className={style.App}>
-        <Header ref={headerRef} />
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <Outlet />
-              </>
-            }
-          >
+    <>
+      <CookieBanner />
+      <ParallaxProvider>
+        <div className={style.App}>
+          <Header ref={headerRef} />
+          <Routes>
             <Route
-              index
+              path="/"
               element={
                 <>
-                  <Hero />
-                  <main
-                    className={style.main}
-                  >
-                    <About ref={aboutRef} />
-                    <Services ref={servicesRef} />
-                    <Team ref={teamRef} />
-                    <Referenzen ref={referenzenRef} />
-                    <Contact openModal={openModal} ref={contactRef} />
-                    {isModalOpen && (
-                      <div className={style.modal}>
-                        <div className={style["modal-content"]}>
-                          <button className={style.close} onClick={closeModal}>
-                          <AiOutlineClose />
-                          </button>
-                          <p>Das Formular wurde erfolgreich übermittelt!</p>
-                        </div>
-                      </div>
-                    )}
-                  </main>
-                  {showScrollToTop && (
-                    <button
-                      className={`${style["scroll-to-top"]} ${
-                        isButtonAnimated ? style.show : ""
-                      }`}
-                      onClick={scrollToTop}
-                    >
-                      <TbArrowBigUpLines />
-                    </button>
-                  )}
+                  <Outlet />
                 </>
               }
-            />
-            <Route path="impressum" element={<Impressum />} />
-            <Route path="datenschutz" element={<Datenschutz />} />
-          </Route>
-        </Routes>
-        <Footer />
-      </div>
-    </ParallaxProvider>
+            >
+              <Route
+                index
+                element={
+                  <>
+                    <Hero />
+                    <main className={style.main}>
+                      <About ref={aboutRef} />
+                      <Services ref={servicesRef} />
+                      <Team ref={teamRef} />
+                      <Referenzen ref={referenzenRef} />
+                      <Contact openModal={openModal} ref={contactRef} />
+                      {isModalOpen && (
+                        <div className={style.modal}>
+                          <div className={style["modal-content"]}>
+                            <button
+                              className={style.close}
+                              onClick={closeModal}
+                            >
+                              <AiOutlineClose />
+                            </button>
+                            <p>Das Formular wurde erfolgreich übermittelt!</p>
+                          </div>
+                        </div>
+                      )}
+                    </main>
+                    {showScrollToTop && (
+                      <button
+                        className={`${style["scroll-to-top"]} ${
+                          isButtonAnimated ? style.show : ""
+                        }`}
+                        onClick={scrollToTop}
+                      >
+                        <TbArrowBigUpLines />
+                      </button>
+                    )}
+                  </>
+                }
+              />
+              <Route path="impressum" element={<Impressum />} />
+              <Route path="datenschutz" element={<Datenschutz />} />
+            </Route>
+          </Routes>
+          <Footer />
+        </div>
+      </ParallaxProvider>
+    </>
   );
 }
 

@@ -12,7 +12,7 @@
 .contact-form {
   display: flex;
   flex-direction: column;
-  width: 500px;
+  max-width: 500px;
   margin: 0 auto;
   gap: 10px;
   padding-top: 60px;
@@ -92,27 +92,6 @@
   .section {
     h2 {
       padding-top: 0px;
-    }
-  }
-  .contact-form {
-    div {
-      input {
-        max-width: 380px;
-      }
-      textarea {
-        max-width: 380px;
-      }
-    }
-  }
-}
-
-@media (max-width: 375px) {
-  .contact-form {
-    input {
-      max-width: 335px;
-    }
-    textarea {
-      max-width: 335px;
     }
   }
 }
