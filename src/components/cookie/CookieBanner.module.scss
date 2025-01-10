@@ -77,3 +77,13 @@
   background: none;
   border: none;
 }
+
+@media (max-width: 540px) {
+  .overlay {
+    .modal {
+      .buttons {
+        flex-direction: column;
+      }
+    }
+  }
+}
